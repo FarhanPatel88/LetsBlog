@@ -66,7 +66,7 @@ public class UserStore : IUserStore<ApplicationUserIdentity>, IUserEmailStore<Ap
 
     public Task<string> GetUserIdAsync(ApplicationUserIdentity user, CancellationToken cancellationToken)
     {
-        return Task.FromResult(user.ApplicationUserId.ToString();
+        return Task.FromResult(user.ApplicationUserId.ToString());
     }
 
     public Task<string> GetUserNameAsync(ApplicationUserIdentity user, CancellationToken cancellationToken)
