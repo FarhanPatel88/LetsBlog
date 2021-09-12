@@ -41,7 +41,7 @@ namespace LetsBlog.Repository
             {
                 await connection.OpenAsync();
 
-                using (var multi = await connection.QueryMultipleAsync("Blog_All", new { Offset = (blogPaging.Page - 1) * blogPaging.PageSize, PageSize = blogPaging.PageSize }, commandType: CommandType.StoredProcedure))
+                using (var multi = await connection.QueryMultipleAsync("Blog_GetAll", new { Offset = (blogPaging.Page - 1) * blogPaging.PageSize, PageSize = blogPaging.PageSize }, commandType: CommandType.StoredProcedure))
                 {
                     results.Items = multi.Read<Blog>();
 

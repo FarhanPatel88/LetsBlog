@@ -78,7 +78,7 @@ namespace LetsBlog.Repository
             {
                 await connection.OpenAsync();
 
-                newPhotoId = await connection.ExecuteScalarAsync<int>("Photo_Insert", new { Photo = dataTable.AsTableValuedParameter("dbo.PhotoType") }, commandType: CommandType.StoredProcedure);
+                newPhotoId = await connection.ExecuteScalarAsync<int>("Photo_Insert", new { Photo = dataTable.AsTableValuedParameter("dbo.PhotoType"), ApplicationUserId = applicationUserId}, commandType: CommandType.StoredProcedure);
             }
 
             photo = await GetAsync(newPhotoId);
