@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace LetsBlog.Repository
 {
-    public class BlogRepository : IBLogRepository
+    public class BlogRepository : IBlogRepository
     {
         private readonly IConfiguration _config;
 

@@ -7,7 +7,7 @@ using LetsBlog.Models.Blog;
 
 namespace LetsBlog.Repository
 {
-    public interface IBLogRepository
+    public interface IBlogRepository
     {
         public Task<Blog> UpsertAsync(BlogCreate blogCreate, int applicationUserId); 
 

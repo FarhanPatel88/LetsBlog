@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.12.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LetsBlog.Identity\LetsBlog.Identity.csproj" />
     <ProjectReference Include="..\LetsBlog.Models\LetsBlog.Models.csproj" />
+    <ProjectReference Include="..\LetsBlog.Repository\LetsBlog.Repository.csproj" />
+    <ProjectReference Include="..\LetsBLog.Services\LetsBLog.Services.csproj" />
   </ItemGroup>
 
 </Project>
