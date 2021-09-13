@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,31 +23,27 @@ import { PhotoAlbumComponent } from './components/photo-album/photo-album.compon
 import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SummaryPipe,
-    BlogComponent,
-    BlogCardComponent,
-    BlogEditComponent,
-    BlogsComponent,
-    FamousBlogsComponent,
-    CommentBoxComponent,
-    CommentSystemComponent,
-    CommentsComponent,
-    DashboardComponent,
-    HomeComponent,
-    LoginComponent,
-    NavbarComponent,
-    NotFoundComponent,
-    PhotoAlbumComponent,
-    RegisterComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SummaryPipe,
+        BlogComponent,
+        BlogCardComponent,
+        BlogEditComponent,
+        BlogsComponent,
+        FamousBlogsComponent,
+        CommentBoxComponent,
+        CommentSystemComponent,
+        CommentsComponent,
+        DashboardComponent,
+        HomeComponent,
+        LoginComponent,
+        NavbarComponent,
+        NotFoundComponent,
+        PhotoAlbumComponent,
+        RegisterComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule],
+    providers: [HttpClient],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
