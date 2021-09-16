@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
         if (this.accountService.currentUserValue) {
             return this.accountService.currentUserValue.username;
         } else {
-            return;
+            return null;
         }
     }
 }
