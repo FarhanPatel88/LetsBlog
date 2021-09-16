@@ -11,18 +11,20 @@ import { ApplicationUserCreate } from '../models/account/application-user-create
     providedIn: 'root',
 })
 export class AccountService {
-    private currentUserSubject$: BehaviorSubject<ApplicationUser> | null;
+    private currentUserSubject$: BehaviorSubject<ApplicationUser | null>;
+
     constructor(private http: HttpClient) {
-        this.currentUserSubject$ = new BehaviorSubject<ApplicationUser>(JSON.parse(localStorage.getItem('letsBlog-currentUser') || ''));
+        this.currentUserSubject$ = new BehaviorSubject<ApplicationUser | null>(JSON.parse(localStorage.getItem('letsBlog-currentUser') || 'null'));
     }
 
     login(model: ApplicationUserLogin): Observable<ApplicationUser> {
         return this.http.post<ApplicationUser>(`${environment.webApi}/Account/login`, model).pipe(
-            map((user: ApplicationUser) => {
+            map((user: ApplicationUser): ApplicationUser => {
                 if (user) {
                     localStorage.setItem('letsBlog-currentUser', JSON.stringify(user));
                     this.setCurrentUser(user);
                 }
+
                 return user;
             })
         );
@@ -30,36 +32,40 @@ export class AccountService {
 
     register(model: ApplicationUserCreate): Observable<ApplicationUser> {
         return this.http.post<ApplicationUser>(`${environment.webApi}/Account/register`, model).pipe(
-            map((user: ApplicationUser) => {
+            map((user: ApplicationUser): ApplicationUser => {
                 if (user) {
                     localStorage.setItem('letsBlog-currentUser', JSON.stringify(user));
                     this.setCurrentUser(user);
                 }
+
                 return user;
             })
         );
     }
 
     setCurrentUser(user: ApplicationUser) {
-        if (this.currentUserSubject$ != null) {
-            this.currentUserSubject$.next(user);
-        } else {
-            this.currentUserSubject$ = new BehaviorSubject<ApplicationUser>(user);
-        }
+        this.currentUserSubject$.next(user);
     }
 
     public get currentUserValue(): ApplicationUser | null {
-        if (this.currentUserSubject$ != null) {
-            return this.currentUserSubject$.value;
-        } else {
-            return null;
+        return this.currentUserSubject$.value;
+    }
+
+    public givenUserIsLoggedIn(username: string) {
+        if (this.currentUserValue != null) {
+            return this.isLoggedIn() && this.currentUserValue.username === username;
         }
+        return false;
+    }
+
+    public isLoggedIn() {
+        const currentUser = this.currentUserValue;
+        const isLoggedIn = !!currentUser && !!currentUser.token;
+        return isLoggedIn;
     }
 
     logout() {
         localStorage.removeItem('letsBlog-currentUser');
-        if (this.currentUserSubject$ != null) {
-            this.currentUserSubject$ = null;
-        }
+        this.currentUserSubject$.next(null);
     }
 }
