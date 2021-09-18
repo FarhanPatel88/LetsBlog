@@ -26,7 +26,7 @@ export class BlogService {
     }
 
     getByApplicationUserId(applicationUserId: number): Observable<Blog[]> {
-        return this.http.get<Blog[]>(`${environment.webApi}/Blog/${applicationUserId}`);
+        return this.http.get<Blog[]>(`${environment.webApi}/Blog/user/${applicationUserId}`);
     }
 
     getMostFamous(): Observable<Blog[]> {

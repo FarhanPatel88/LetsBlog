@@ -38,7 +38,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             for (const key in error.error) {
                 if (!!error.error[key]) {
                     const errorElement = error.error[key];
-                    errorMessage = `${errorMessage}${errorElement.code} - ${errorElement.Description}\n`;
+                    errorMessage = `${errorMessage}${errorElement.code} - ${errorElement.description}\n`;
                 }
             }
             this.toastr.error(errorMessage, error.statusText);
@@ -61,18 +61,21 @@ export class ErrorInterceptor implements HttpInterceptor {
             console.log(error);
         }
     }
+
     handle401Error(error: any) {
-        let errorMessage = 'Please login into your account.';
+        let errorMessage = 'Please login to your account.';
         this.accountService.logout();
         this.toastr.error(errorMessage, error.statusText);
         this.router.navigate(['/login']);
     }
+
     handle500Error(error: any) {
-        this.toastr.error('Please contact your administrator. An error has happened in the server.');
+        this.toastr.error('Please contact the administrator. An error happened in the server.');
         console.log(error);
     }
+
     handleUnexpectedError(error: any) {
-        this.toastr.error('Something unexpected happened');
+        this.toastr.error('Something unexpected happened.');
         console.log(error);
     }
 }
