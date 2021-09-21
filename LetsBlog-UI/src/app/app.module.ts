@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -56,10 +57,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ToastrModule.forRoot({
             positionClass: 'toast-bottom-right',
         }),
-        BsDropdownModule,
-        CollapseModule,
+        BsDropdownModule.forRoot(),
+        CollapseModule.forRoot(),
         FormsModule,
         ReactiveFormsModule,
+        TypeaheadModule.forRoot(),
     ],
     providers: [
         HttpClient,

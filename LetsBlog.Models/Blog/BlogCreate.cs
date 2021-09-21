@@ -17,8 +17,8 @@ namespace LetsBlog.Models.Blog
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Content is required")]
-        [MinLength(300, ErrorMessage = "Content should be 300-3000 characters long!")]
-        [MaxLength(3000, ErrorMessage = "Content should be 300-3000 characters long!")]
+        [MinLength(300, ErrorMessage = "Content should be 300-5000 characters long!")]
+        [MaxLength(5000, ErrorMessage = "Content should be 300-5000 characters long!")]
         public string Content { get; set; }
 
         public int? PhotoId { get; set; }
