@@ -33,6 +33,7 @@ public class AccountController : ControllerBase
 
         if (result.Succeeded)
         {
+            applicationUserIdentity = await _userManager.FindByNameAsync(applicationUserCreate.Username);
             ApplicationUser user = new ApplicationUser()
             {
                 ApplicationUserID = applicationUserIdentity.ApplicationUserId,
