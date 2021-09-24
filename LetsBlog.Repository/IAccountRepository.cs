@@ -2,6 +2,8 @@
 using LetsBlog.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace LetsBlog.Repository;
 public interface IAccountRepository

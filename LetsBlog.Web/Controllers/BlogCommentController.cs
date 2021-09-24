@@ -1,4 +1,7 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Threading.Tasks;
 using LetsBlog.Models.BlogComments;
 using LetsBlog.Repository;
 using Microsoft.AspNetCore.Authorization;

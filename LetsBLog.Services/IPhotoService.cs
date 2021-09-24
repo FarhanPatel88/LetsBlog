@@ -1,6 +1,7 @@
 ﻿
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace LetsBLog.Services;
 public interface IPhotoService

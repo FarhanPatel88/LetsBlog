@@ -2,6 +2,9 @@
 using LetsBlog.Models.Account;
 using LetsBlog.Repository;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace LetsBlog.Identity;
 public class UserStore : IUserStore<ApplicationUserIdentity>, IUserEmailStore<ApplicationUserIdentity>, IUserPasswordStore<ApplicationUserIdentity>
